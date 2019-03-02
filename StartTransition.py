@@ -9,5 +9,6 @@ class StartTransition(Transition.Transition):
         
         
     def CheckTransition(self):
-        print "Transition Check"
+        #print "Transition Check"
+        x = 10
 

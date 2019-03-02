@@ -15,7 +15,7 @@ class StartState(MachineState.MachineState):
         
     def Update(self):
         t = Twist()
-        t.angular.z = 0.5
+        t.angular.z = 0.8
         self.pub.publish(t)
         
     

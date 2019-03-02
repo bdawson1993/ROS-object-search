@@ -1,16 +1,33 @@
 #!/usr/bin/env python
 
 import rospy
-import vision 
+import cv2 
+import numpy
+from nav_msgs.msg import OccupancyGrid
 
-class control:
+
+class Control:
     def __init__(self):
-        vis = vision.Vision()
         
-        self.image = vis.thresh_img
+        #self.map_sub = rospy.Subscriber("/map", OccupancyGrid, self.callback)
+        self.count = 1
+        self.map = numpy.zeros(0)
+        
+         
+        
+    #def callback(self, data):
+        
+        
+        
+        
+        
+        
+        
+       
+                
         
         
         
 
-c = control()
+
 
