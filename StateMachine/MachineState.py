@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 import Transition
 
-class MachineState:
+class MachineState(object):
     def __init__(self):
         self.__stateName = "DEFAULT"
         self.__transitions = list()
         
         
-    def __init__(self, stateName,machine,transitions):
+    def __init__(self, stateName, machine, transitions):
         self.__stateName = stateName
         self.__transitions = transitions
         self.__stateMachine = machine

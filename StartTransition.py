@@ -1,14 +1,20 @@
 #!/usr/bin/env python
 from StateMachine import Transition
-from StateMachine import MachineState
+
 
 class StartTransition(Transition.Transition):
-    def __init__(self):
-        Transition.Transition.__init__(self, "Start")
+    def __init__(self, stateMachine):
+        Transition.Transition.__init__(self,"Move", stateMachine)
+        
        
         
         
     def CheckTransition(self):
-        #print "Transition Check"
-        x = 10
+        if((self.GetMachine().GetVision().GetImage() > 253).sum() > 20000):
+            self.SetMoveToNextState(True)
+        
+        
+        print (self.GetMachine().GetVision().GetImage() > 253).sum()
+        
+       
 

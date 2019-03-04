@@ -5,8 +5,8 @@ from geometry_msgs.msg import Twist
 
 
 class StartState(MachineState.MachineState):
-    def __init__(self, stateName, transitions):
-        MachineState.MachineState.__init__(self, stateName, transitions)
+    def __init__(self, mach, transitions):
+        super(StartState, self).__init__("Start",mach, transitions)
         
         
     

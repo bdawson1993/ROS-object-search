@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-class Transition:
+class Transition(object):
     def __init__(self, stateName, stateMachine):
         self.__nextState = stateName
         self.__moveToNextState = False
@@ -8,6 +8,9 @@ class Transition:
     def NextState(self):
         return self.__nextState
         
+    def SetMoveToNextState(self,value):
+        self.__moveToNextState = value        
+    
     def MoveToNextState(self):
         return self.__moveToNextState
         
@@ -15,6 +18,9 @@ class Transition:
         raise NotImplementedError()
         
     def Reset(self):
-        self.moveToNextState = False
+        self.__moveToNextState = False
+        
+    def GetMachine(self):
+        return self.__stateMachine
         
 

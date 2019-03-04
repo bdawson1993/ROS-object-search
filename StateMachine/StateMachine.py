@@ -43,10 +43,10 @@ class StateMachine:
                 
     #change state
     def ChangeState(self, stateName):
-        for state in self.states:
+        for state in self.__states:
             if(state.StateName() == stateName):
-                self.currentState = state
-                self.ChangeState.Start()
+                self.__currentState = state
+                self.__currentState.Start()
                 break #break when state has been found
                 
     def GetVision(self):
