@@ -10,7 +10,7 @@ class StartTransition(Transition.Transition):
         
         
     def CheckTransition(self):
-        if((self.GetMachine().GetVision().GetImage() > 253).sum() > 20000):
+        if((self.GetMachine().GetVision().GetImage() > 253).sum() > 200000):
             self.SetMoveToNextState(True)
         
         

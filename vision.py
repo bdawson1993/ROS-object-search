@@ -63,7 +63,7 @@ class Vision:
         redHigh = numpy.array((4,4,255))
         
         greenLow = numpy.array((0,0,0))
-        greenHigh = numpy.array((0,255,0))
+        greenHigh = numpy.array((6,255,6))
         
         
         blue_thresh = numpy.zeros([width,height])
