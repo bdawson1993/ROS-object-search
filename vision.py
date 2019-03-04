@@ -66,10 +66,10 @@ class Vision:
         greenHigh = numpy.array((6,255,6))
         
         
-        blue_thresh = numpy.zeros([width,height])
-        yellow_thresh = numpy.zeros([width,height])
-        red_thresh = numpy.zeros([width, height])        
-        green_thresh = numpy.zeros([width, height])
+        blue_thresh = numpy.zeros([height, width])
+        yellow_thresh = numpy.zeros([height, width])
+        red_thresh = numpy.zeros([height, width])        
+        green_thresh = numpy.zeros([height, width])
         
         
 
@@ -106,11 +106,11 @@ class Vision:
         
         #create grayscale and display images side by side
         grayScale = cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY)
-        numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
+        #numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
         
              
-        cv2.imshow("Image window", numpy_hor)
-        cv2.imshow("Thresh Window", green_thresh)
+        cv2.imshow("Image window", grayScale)
+        cv2.imshow("Thresh Window", self.__thresh_img)
               
         
         cv2.waitKey(1)
