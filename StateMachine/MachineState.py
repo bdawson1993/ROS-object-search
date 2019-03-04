@@ -6,9 +6,11 @@ class MachineState:
         self.__stateName = "DEFAULT"
         self.__transitions = list()
         
-    def __init__(self, stateName, transitions):
+        
+    def __init__(self, stateName,machine,transitions):
         self.__stateName = stateName
         self.__transitions = transitions
+        self.__stateMachine = machine
         
     #return statename to the state machine
     def StateName(self):
@@ -20,6 +22,10 @@ class MachineState:
     
     #peform the update step of the state
     def Update(self):
+        raise NotImplementedError()
+        
+    #cleanup state before change
+    def StateChange(self):
         raise NotImplementedError()
         
     #perform all transistion checks

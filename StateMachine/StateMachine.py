@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import MachineState
+import vision
 from time import sleep
 
 #Converion of my state machine library written in c# 
@@ -11,6 +12,7 @@ class StateMachine:
         self.__states = list()
         self.__currentState = object() 
         self.__hasLoaded = False
+        self.__vision = vision.Vision()
         
       
      #add state to state machine
@@ -46,6 +48,9 @@ class StateMachine:
                 self.currentState = state
                 self.ChangeState.Start()
                 break #break when state has been found
+                
+    def GetVision(self):
+        return self.__vision
         
         
 

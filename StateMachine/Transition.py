@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 class Transition:
-    def __init__(self, stateName):
+    def __init__(self, stateName, stateMachine):
         self.__nextState = stateName
         self.__moveToNextState = False
+        self.__stateMachine = stateMachine
           
     def NextState(self):
         return self.__nextState
