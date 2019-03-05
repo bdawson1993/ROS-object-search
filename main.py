@@ -7,7 +7,7 @@ import control
 from StateMachine import StateMachine
 
 import StartState
-import StartTransition
+import OnSeeObjectTransition
 import MoveState
 import MoveTransition
 
@@ -22,7 +22,7 @@ class Search:
         
         #create start state
         startTrans = []
-        startTrans.append(StartTransition.StartTransition(mach))        
+        startTrans.append(OnSeeObjectTransition.OnSeeObjectTransition(mach))        
         startState = StartState.StartState(mach,startTrans)
         
         #create move state
@@ -42,10 +42,7 @@ class Search:
         while not rospy.is_shutdown():
             
             mach.Update()
-            #x = (v.GetImage() > 253).sum() #253 or greater
             
-            
-            #print x
             
         
         
