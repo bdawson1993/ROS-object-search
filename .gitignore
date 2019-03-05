@@ -2,3 +2,6 @@ MoveState.pyc
 MoveTransition.pyc
 OnSeeObjectTransition.pyc
 vision.pyc
+SearchStateMachine.pyc
+vision.pyc
+StateMachine/StateMachine.pyc

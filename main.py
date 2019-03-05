@@ -4,7 +4,7 @@ import rospy
 import control
 
 
-from StateMachine import StateMachine
+from SearchStateMachine import SearchStateMachine
 
 import StartState
 import OnSeeObjectTransition
@@ -18,7 +18,7 @@ class Search:
         rospy.init_node("vision", anonymous=True)
                
         #prepare state machine
-        mach = StateMachine.StateMachine()
+        mach = SearchStateMachine()
         
         #create start state
         startTrans = []

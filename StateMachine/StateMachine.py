@@ -5,12 +5,12 @@ from time import sleep
 
 #Converion of my state machine library written in c# 
 
-class StateMachine:
+class StateMachine(object):
     
     #init State machine with basic info
     def __init__(self):
         self.__states = list()
-        self.__currentState = object() 
+        self.__currentState = object()
         self.__hasLoaded = False
         self.__vision = vision.Vision()
         
@@ -49,8 +49,6 @@ class StateMachine:
                 self.__currentState.Start()
                 break #break when state has been found
                 
-    def GetVision(self):
-        return self.__vision
         
         
 
