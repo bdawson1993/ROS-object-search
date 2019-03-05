@@ -9,7 +9,7 @@ from SearchStateMachine import SearchStateMachine
 import StartState
 import OnSeeObjectTransition
 import MoveState
-import MoveTransition
+import OnBumpTransition
 
 import cv2
 
@@ -27,7 +27,7 @@ class Search:
         
         #create move state
         moveTrans = []
-        moveTrans.append(MoveTransition.MoveTransition(mach))
+        moveTrans.append(OnBumpTransition.OnBumpTransition(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
         
         #add mach state
