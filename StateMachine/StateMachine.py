@@ -43,12 +43,14 @@ class StateMachine(object):
                 
     #change state
     def ChangeState(self, stateName):
-        print "State Changed To" + stateName
         for state in self.__states:
             if(state.StateName() == stateName):
                 self.__currentState = state
                 self.__currentState.Start()
                 break #break when state has been found
+
+    def GetCurrentState(self):
+        return self.__currentState.StateName()
                 
         
         
