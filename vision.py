@@ -97,8 +97,8 @@ class Vision:
                                  
         
         self.__thresh_img = blue_thresh + yellow_thresh + red_thresh + green_thresh
-        self.__leftImage = self.__thresh_img[:,0:width/2]
-        self.__rightImage = self.__thresh_img[:,width/2:width]
+        self.__leftImage = self.__thresh_img[:,0:width/2 + 1]
+        self.__rightImage = self.__thresh_img[:,width/2:width + 1]
         
         ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side

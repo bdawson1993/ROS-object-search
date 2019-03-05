@@ -43,6 +43,7 @@ class StateMachine(object):
                 
     #change state
     def ChangeState(self, stateName):
+        print "State Changed To" + stateName
         for state in self.__states:
             if(state.StateName() == stateName):
                 self.__currentState = state

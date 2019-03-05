@@ -13,7 +13,7 @@ class MoveState(MachineState.MachineState):
 
     def Update(self):
         t = Twist()
-        t.linear.x = 0.1
+        t.linear.x = 0.6
 
         left = self.GetMachine().GetVision().LeftImageCount()
         right = self.GetMachine().GetVision().LeftImageCount()
