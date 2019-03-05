@@ -21,8 +21,8 @@ class MoveState(MachineState.MachineState):
         #check if an object is in view
         print left
         print right
-        
-        if left > 0 or right > 0: #rot left
+
+        if not left == 0 or right == 0: #rot left
             if left >= right:
                 t.angular.z = 0.3
             else:#rot right

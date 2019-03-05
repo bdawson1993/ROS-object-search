@@ -1,17 +1,19 @@
 #!/usr/bin/env python
-
+import rospy
+from kobuki_msgs.msg import BumperEvent
 from StateMachine import Transition
 from StateMachine import MachineState
 
 class OnBumpTransition(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnBumpTransition,self).__init__("Start", stateMachine)
-        
-       
-        
-    def CheckTransition(self):
-        total = (self.GetMachine().GetVision().GetImage() > 253).sum()
+        super(OnBumpTransition,self).__init__("Recognize Object", stateMachine)
+        self.__sub = rospy.Subscriber("/mobile_base/events/bumper",BumperEvent, self.processBumpData)
 
-        print total
-        if total == 0:
-            self.SetMoveToNextState(True)
+    def CheckTransition(self):
+        print "Checking"
+
+    def processBumpData(self, data):
+        print "Bump"
+
+    
+        

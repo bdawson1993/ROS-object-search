@@ -10,7 +10,9 @@ from std_msgs.msg import String
 import StartState
 import OnSeeObjectTransition
 import MoveState
+import OnEmptyVisionTransition
 import OnBumpTransition
+import RecognizeObjectState
 
 import cv2
 
@@ -28,12 +30,19 @@ class Search:
         
         #create move state
         moveTrans = []
+        moveTrans.append(OnEmptyVisionTransition.OnEmptyVisionTransition(mach))
         moveTrans.append(OnBumpTransition.OnBumpTransition(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
+        
+        #create reg state
+        regTrans = []
+        regTrans.append(OnEmptyVisionTransition.OnEmptyVisionTransition(mach))
+        regState = RecognizeObjectState.RecognizeObjectState(mach, regTrans)
         
         #add mach state
         mach.AddState(startState)
         mach.AddState(moveState)
+        mach.AddState(regState)
         
         
         #finish loading 

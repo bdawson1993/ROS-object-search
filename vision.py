@@ -37,6 +37,8 @@ class Vision:
        #process image from the robot
     def processImage(self, data):
         cv2.namedWindow("Thresh Window", 1)
+        cv2.namedWindow("Left Image", 1)
+        cv2.namedWindow("Right Image", 1)
         
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
@@ -97,8 +99,8 @@ class Vision:
                                  
         
         self.__thresh_img = blue_thresh + yellow_thresh + red_thresh + green_thresh
-        self.__leftImage = self.__thresh_img[:,0:width/2 + 1]
-        self.__rightImage = self.__thresh_img[:,width/2:width + 1]
+        self.__leftImage = self.__thresh_img[:,0:width/2]
+        self.__rightImage = self.__thresh_img[:,width/2:width]
         
         ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side
@@ -108,6 +110,8 @@ class Vision:
              
         
         cv2.imshow("Thresh Window", numpy_hor)
+        cv2.imshow("Left Image", self.__leftImage)
+        cv2.imshow("Right Image", self.__rightImage)
               
         
         cv2.waitKey(1)
