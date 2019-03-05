@@ -6,6 +6,7 @@ import numpy
 
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
+from sensor_msgs.msg import PointCloud2 as pc2
 from cv_bridge import CvBridge, CvBridgeError
 
 
@@ -19,6 +20,7 @@ class Vision:
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber("/camera/rgb/image_raw",
                                          Image, self.processImage)
+       
         
         #left and right image
         self.__leftImage = numpy.zeros(0)
@@ -34,12 +36,7 @@ class Vision:
        
        #process image from the robot
     def processImage(self, data):
-        cv2.namedWindow("Image window", 1)
         cv2.namedWindow("Thresh Window", 1)
-        
-        
-        
-       
         
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
@@ -106,19 +103,16 @@ class Vision:
         ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side
         grayScale = cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY)
-        #numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
+        numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
         
              
-        cv2.imshow("Image window", grayScale)
-        cv2.imshow("Thresh Window", self.__thresh_img)
+        
+        cv2.imshow("Thresh Window", numpy_hor)
               
         
         cv2.waitKey(1)
         
-        
-        
-        
-        
+  
     def __del__(self):
         cv2.destroyAllWindows()
         
@@ -134,5 +128,11 @@ class Vision:
             self.__findRed = False
         if value == "Yellow":
             self.__findYellow = False
+
+    def LeftImageCount(self):
+        return (self.__leftImage > 253).sum()
+
+    def RightImageCount(self):
+        return (self.__rightImage > 253).sum()
 
 

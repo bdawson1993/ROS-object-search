@@ -13,6 +13,8 @@ class OnSeeObjectTransition(Transition.Transition):
     def CheckTransition(self):
         if((self.GetMachine().GetVision().GetImage() > 253).sum() > 100):
             self.SetMoveToNextState(True)
+
+        
         
         
         

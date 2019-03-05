@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 import Transition
+import StateMachine
 
 class MachineState(object):
     def __init__(self):
         self.__stateName = "DEFAULT"
         self.__transitions = list()
+        self.__stateMachine = StateMachine.StateMachine()
         
         
     def __init__(self, stateName, machine, transitions):
@@ -37,6 +39,9 @@ class MachineState(object):
     #return all transition to state machine        
     def Transitions(self):
         return self.__transitions
+
+    def GetMachine(self):
+        return self.__stateMachine
             
         
         

@@ -15,6 +15,19 @@ class MoveState(MachineState.MachineState):
         t = Twist()
         t.linear.x = 0.1
 
+        left = super(MoveState, self).GetMachine().GetVision().LeftImageCount()
+        right = super(MoveState, self).GetMachine().GetVision().LeftImageCount()
+
+        #check if an object is in view
+        if left > 0 or right > 0: #rot left
+            if left >= right:
+                t.angular.z = 0.1
+            else:#rot right
+                t.angular.z = -0.1
+
+
+        
+
         self.__pub.publish(t)       
         
     
