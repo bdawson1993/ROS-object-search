@@ -9,6 +9,8 @@ class OnReachedGoal(Transition.Transition):
         self.__bump = False
 
     def proccessGoalData(self, data):
-        
+        a = data[0]
+        print a
+
 
     
