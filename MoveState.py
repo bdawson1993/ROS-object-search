@@ -19,8 +19,8 @@ class MoveState(MachineState.MachineState):
         right = self.GetMachine().GetVision().LeftImageCount()
 
         #check if an object is in view
-        print left
-        print right
+        #print left
+        #print right
 
         
         if left >= right:
