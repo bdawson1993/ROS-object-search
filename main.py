@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy
 import rospy
-import control
+
 
 
 from SearchStateMachine import SearchStateMachine
