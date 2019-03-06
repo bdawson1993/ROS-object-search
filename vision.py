@@ -37,7 +37,7 @@ class Vision:
        #process image from the robot
     def processImage(self, data):
         cv2.namedWindow("Thresh Window", 1)
-        cv2.namedWindow("Left Image", 1)
+        cv2.namedWindow("Grayscale", 1)
         #cv2.namedWindow("Right Image", 1)
         
         try:
@@ -109,8 +109,8 @@ class Vision:
         
              
         
-        cv2.imshow("Thresh Window", grayScale)
-        cv2.imshow("Left Image", self.__thresh_img)
+        cv2.imshow("Thresh Window", self.__thresh_img)
+        cv2.imshow("Grayscale", grayScale)
         #cv2.imshow("Right Image", self.__rightImage)
               
         

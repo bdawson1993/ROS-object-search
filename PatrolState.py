@@ -1,6 +1,8 @@
 from StateMachine import MachineState
 import rospy
-from geometry_msgs.msg import PoseStamped
+import actionlib
+from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+
 
 
 class PatrolState(MachineState.MachineState):
@@ -8,11 +10,23 @@ class PatrolState(MachineState.MachineState):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
     def Start(self):
-        self.__pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
-        a = PoseStamped()
-        a.header.stamp = "now"
+        self.__client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
+        self.__client.wait_for_server()
+
+        goal = MoveBaseGoal()
+        goal.target_pose.header.frame_id = "map"
+        goal.target_pose.header.stamp = rospy.Time.now()
+        goal.target_pose.pose.position.x = 0.1
+        goal.target_pose.pose.orientation.w = 1.0
+        self.__client.send_goal(goal)
+        
+        
+
+        
+        
+
 
     def Update(self):
-        print "Patrolling..."
+        self.Transitions()[0].SetClient(self.__client)
         
         

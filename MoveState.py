@@ -13,7 +13,7 @@ class MoveState(MachineState.MachineState):
 
     def Update(self):
         t = Twist()
-        t.linear.x = 0.6
+        t.linear.x = 0.3
 
         left = self.GetMachine().GetVision().LeftImageCount()
         right = self.GetMachine().GetVision().LeftImageCount()
@@ -23,10 +23,10 @@ class MoveState(MachineState.MachineState):
         print right
 
         
-        if left <= right:
-            t.angular.z = 0.3
+        if left >= right:
+            t.angular.z = 0.1
         else:#rot right
-            t.angular.z = -0.3
+            t.angular.z = -0.1
 
 
         

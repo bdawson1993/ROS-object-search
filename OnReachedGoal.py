@@ -1,23 +1,22 @@
 import rospy
 import numpy
 from StateMachine import Transition
-from actionlib_msgs.msg import GoalStatusArray
+import actionlib
+from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
 class OnReachedGoal(Transition.Transition):
     def __init__(self, stateMachine):
         super(OnReachedGoal,self).__init__("Start", stateMachine)
-        self.__sub = rospy.Subscriber("/move_base/status",GoalStatusArray, self.proccessGoalData)
+        
         
 
     def CheckTransition(self):
-        print "checking"
-
-
-    def proccessGoalData(self, data):
-       
-        #GoalStatusArray.
-        a = data._full_text
-        print a
+        if self.__client.get_state() == 3:
+            print "Change"
+            self.SetMoveToNextState(True)
+        
+    def SetClient(self, client):
+        self.__client = client
         
 
 

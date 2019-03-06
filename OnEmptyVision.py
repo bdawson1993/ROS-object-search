@@ -12,6 +12,6 @@ class OnEmptyVision(Transition.Transition):
     def CheckTransition(self):
         total = (self.GetMachine().GetVision().GetImage() > 253).sum()
 
-        print total
+       
         if total == 0:
             self.SetMoveToNextState(True)

@@ -10,7 +10,8 @@ class OnTimerEnd(Transition.Transition):
         self.__counter = 0
 
     def CheckTransition(self):
-        if self.__counter <= self.__interval:
+        print self.__counter
+        if self.__counter >= self.__interval:
             self.SetMoveToNextState(True)
             self.__counter = 0
         else:
