@@ -8,11 +8,15 @@ from SearchStateMachine import SearchStateMachine
 from std_msgs.msg import String
 
 import StartState
-import OnSeeObjectTransition
+import PatrolState
 import MoveState
+import RecognizeObjectState
+
+import OnTimerEnd
+import OnReachedGoal
 import OnEmptyVisionTransition
 import OnBumpTransition
-import RecognizeObjectState
+import OnSeeObjectTransition
 
 import cv2
 
@@ -25,7 +29,8 @@ class Search:
         
         #create start state
         startTrans = []
-        startTrans.append(OnSeeObjectTransition.OnSeeObjectTransition(mach))        
+        startTrans.append(OnSeeObjectTransition.OnSeeObjectTransition(mach)) 
+        startTrans.append(OnTimerEnd.OnTimerEnd(mach))      
         startState = StartState.StartState(mach,startTrans)
         
         #create move state
@@ -39,10 +44,16 @@ class Search:
         regTrans.append(OnEmptyVisionTransition.OnEmptyVisionTransition(mach))
         regState = RecognizeObjectState.RecognizeObjectState(mach, regTrans)
         
+        #create patrol state
+        patrolTrans = []
+        patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
+        patrolState = PatrolState.PatrolState(mach, patrolTrans)
+
         #add mach state
         mach.AddState(startState)
         mach.AddState(moveState)
         mach.AddState(regState)
+        mach.AddState(patrolState)
         
         
         #finish loading 

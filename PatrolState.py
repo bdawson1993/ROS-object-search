@@ -8,9 +8,11 @@ class PatrolState(MachineState.MachineState):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
     def Start(self):
-        self.__pub = rospy.Publisher("/move_base_simple/goal", PoseStamped())
+        self.__pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
         a = PoseStamped()
         a.header.stamp = "now"
-        a.frame_id = "map"
-        a.x = 1.0
+
+    def Update(self):
+        print "Patrolling..."
+        
         

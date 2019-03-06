@@ -1,16 +1,24 @@
 import rospy
+import numpy
 from StateMachine import Transition
 from actionlib_msgs.msg import GoalStatusArray
 
 class OnReachedGoal(Transition.Transition):
     def __init__(self, stateMachine):
         super(OnReachedGoal,self).__init__("Start", stateMachine)
-        self.__sub = rospy.Subscriber("/mobile_base/events/bumper",GoalStatusArray, self.proccessGoalData)
-        self.__bump = False
+        self.__sub = rospy.Subscriber("/move_base/status",GoalStatusArray, self.proccessGoalData)
+        
+
+    def CheckTransition(self):
+        print "checking"
+
 
     def proccessGoalData(self, data):
-        a = data[0]
+       
+        #GoalStatusArray.
+        a = data._full_text
         print a
+        
 
 
     
