@@ -102,7 +102,7 @@ class Vision:
         self.__leftImage = self.__thresh_img[:,0:width/2]
         self.__rightImage = self.__thresh_img[:,width/2:width]
         
-        ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
+        #ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side
         grayScale = cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY)
         #numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
@@ -123,15 +123,19 @@ class Vision:
     def GetImage(self):
         return self.__thresh_img
         
-    def SetFind(self, value):
-        if value == "BLUE":
-            self.__findBlue = False
-        if value == "Green":
-            self.__findGreen = False
-        if value == "RED":
-            self.__findRed = False
-        if value == "YELLOW":
-            self.__findYellow = False
+    def SetFind(self, color, value):
+        if color == "BLUE":
+            self.__findBlue = value
+        if color == "Green":
+            self.__findGreen = value
+        if color == "RED":
+            self.__findRed = value
+        if color == "YELLOW":
+            self.__findYellow = value
+
+    #get a list of all the color values
+    def GetFind(self):
+        return {self.__findBlue, self.__findGreen, self.__findRed, self.__findYellow}
 
     def LeftImageCount(self):
         return (self.__leftImage > 253).sum()
