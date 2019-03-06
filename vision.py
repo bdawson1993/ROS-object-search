@@ -37,7 +37,7 @@ class Vision:
        #process image from the robot
     def processImage(self, data):
         cv2.namedWindow("Thresh Window", 1)
-        #cv2.namedWindow("Left Image", 1)
+        cv2.namedWindow("Left Image", 1)
         #cv2.namedWindow("Right Image", 1)
         
         try:
@@ -105,12 +105,12 @@ class Vision:
         ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side
         grayScale = cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY)
-        numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
+        #numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
         
              
         
-        cv2.imshow("Thresh Window", numpy_hor)
-        #cv2.imshow("Left Image", self.__leftImage)
+        cv2.imshow("Thresh Window", grayScale)
+        cv2.imshow("Left Image", self.__thresh_img)
         #cv2.imshow("Right Image", self.__rightImage)
               
         
@@ -130,7 +130,7 @@ class Vision:
             self.__findGreen = False
         if value == "RED":
             self.__findRed = False
-        if value == "Yellow":
+        if value == "YELLOW":
             self.__findYellow = False
 
     def LeftImageCount(self):
