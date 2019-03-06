@@ -102,7 +102,7 @@ class Vision:
         self.__leftImage = self.__thresh_img[:,0:width/2]
         self.__rightImage = self.__thresh_img[:,width/2:width]
         
-        #ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
+        ret,self.__thresh_img = cv2.threshold(self.__thresh_img, 0,255, cv2.THRESH_BINARY)
         #create grayscale and display images side by side
         grayScale = cv2.cvtColor(cv_image,cv2.COLOR_BGR2GRAY)
         #numpy_hor = numpy.concatenate((grayScale, self.__thresh_img), axis=1)        
