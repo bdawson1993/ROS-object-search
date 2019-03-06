@@ -2,10 +2,10 @@
 from StateMachine import Transition
 
 
-class OnSeeObjectTransition(Transition.Transition):
+class OnSeeObject(Transition.Transition):
     def __init__(self, stateMachine):
         #Transition.Transition.__init__(self,"Move", stateMachine)
-        super(OnSeeObjectTransition, self).__init__("Move", stateMachine)
+        super(OnSeeObject, self).__init__("Move", stateMachine)
         
        
         

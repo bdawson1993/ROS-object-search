@@ -3,9 +3,9 @@
 from StateMachine import Transition
 from StateMachine import MachineState
 
-class OnEmptyVisionTransition(Transition.Transition):
+class OnEmptyVision(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnEmptyVisionTransition,self).__init__("Start", stateMachine)
+        super(OnEmptyVision,self).__init__("Start", stateMachine)
         
        
         

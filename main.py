@@ -14,9 +14,9 @@ import RecognizeObjectState
 
 import OnTimerEnd
 import OnReachedGoal
-import OnEmptyVisionTransition
-import OnBumpTransition
-import OnSeeObjectTransition
+import OnEmptyVision
+import OnBump
+import OnSeeObject
 
 import cv2
 
@@ -29,19 +29,19 @@ class Search:
         
         #create start state
         startTrans = []
-        startTrans.append(OnSeeObjectTransition.OnSeeObjectTransition(mach)) 
+        startTrans.append(OnSeeObject.OnSeeObject(mach)) 
         startTrans.append(OnTimerEnd.OnTimerEnd(mach))      
         startState = StartState.StartState(mach,startTrans)
         
         #create move state
         moveTrans = []
-        moveTrans.append(OnEmptyVisionTransition.OnEmptyVisionTransition(mach))
-        moveTrans.append(OnBumpTransition.OnBumpTransition(mach))
+        moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
+        moveTrans.append(OnBump.OnBump(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
         
         #create reg state
         regTrans = []
-        regTrans.append(OnEmptyVisionTransition.OnEmptyVisionTransition(mach))
+        regTrans.append(OnEmptyVision.OnEmptyVision(mach))
         regState = RecognizeObjectState.RecognizeObjectState(mach, regTrans)
         
         #create patrol state
