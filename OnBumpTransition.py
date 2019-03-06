@@ -8,12 +8,15 @@ class OnBumpTransition(Transition.Transition):
     def __init__(self, stateMachine):
         super(OnBumpTransition,self).__init__("Recognize Object", stateMachine)
         self.__sub = rospy.Subscriber("/mobile_base/events/bumper",BumperEvent, self.processBumpData)
+        self.__bump = False
 
     def CheckTransition(self):
-        print "Checking"
+        if self.__bump == True:
+            self.SetMoveToNextState(True)
 
     def processBumpData(self, data):
-        print "Bump"
+        #BumperEvent.
+        self.__bump = data.PRESSED
 
     
         

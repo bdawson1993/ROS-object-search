@@ -8,4 +8,5 @@ class RecognizeObjectState(MachineState.MachineState):
         print "Start"
 
     def Update(self):
-        print "Update"
+        count = (self.GetMachine().GetVision().GetImage() > 253).sum()
+        self.GetMachine().GetVision().SetFind("YELLOW")

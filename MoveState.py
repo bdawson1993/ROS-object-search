@@ -23,10 +23,10 @@ class MoveState(MachineState.MachineState):
         print right
 
         if not left == 0 or right == 0: #rot left
-            if left >= right:
-                t.angular.z = 0.3
-            else:#rot right
+            if left < right:
                 t.angular.z = -0.3
+            else:#rot right
+                t.angular.z = 0.3
 
 
         

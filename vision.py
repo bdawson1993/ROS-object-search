@@ -37,8 +37,8 @@ class Vision:
        #process image from the robot
     def processImage(self, data):
         cv2.namedWindow("Thresh Window", 1)
-        cv2.namedWindow("Left Image", 1)
-        cv2.namedWindow("Right Image", 1)
+        #cv2.namedWindow("Left Image", 1)
+        #cv2.namedWindow("Right Image", 1)
         
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
@@ -110,8 +110,8 @@ class Vision:
              
         
         cv2.imshow("Thresh Window", numpy_hor)
-        cv2.imshow("Left Image", self.__leftImage)
-        cv2.imshow("Right Image", self.__rightImage)
+        #cv2.imshow("Left Image", self.__leftImage)
+        #cv2.imshow("Right Image", self.__rightImage)
               
         
         cv2.waitKey(1)
