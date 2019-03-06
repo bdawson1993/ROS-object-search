@@ -16,7 +16,8 @@ class PatrolState(MachineState.MachineState):
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
-        goal.target_pose.pose.position.x = 0.1
+        goal.target_pose.pose.position.x = 1.0
+        goal.target_pose.pose.position.y = 1.0
         goal.target_pose.pose.orientation.w = 1.0
         self.__client.send_goal(goal)
         

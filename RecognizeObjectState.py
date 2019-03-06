@@ -11,4 +11,5 @@ class RecognizeObjectState(MachineState.MachineState):
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
         values = self.GetMachine().GetVision().GetFind()
-        print values
+        #print values
+        self.Transitions()[0].SetMoveToNextState(True)

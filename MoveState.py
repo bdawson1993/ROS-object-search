@@ -16,7 +16,7 @@ class MoveState(MachineState.MachineState):
         t.linear.x = 0.3
 
         left = self.GetMachine().GetVision().LeftImageCount()
-        right = self.GetMachine().GetVision().LeftImageCount()
+        right = self.GetMachine().GetVision().RightImageCount()
 
         #check if an object is in view
         #print left
@@ -24,9 +24,9 @@ class MoveState(MachineState.MachineState):
 
         
         if left >= right:
-            t.angular.z = 0.1
+            t.angular.z = 0.3
         else:#rot right
-            t.angular.z = -0.1
+            t.angular.z = -0.3
 
 
         
