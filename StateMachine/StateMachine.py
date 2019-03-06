@@ -12,7 +12,6 @@ class StateMachine(object):
         self.__states = list()
         self.__currentState = object()
         self.__hasLoaded = False
-        self.__vision = vision.Vision()
         
       
      #add state to state machine
