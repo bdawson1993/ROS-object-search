@@ -28,7 +28,7 @@ class MachineState(object):
         
     #cleanup state before change
     def StateChange(self):
-        raise NotImplementedError()
+        print "State Changed "
         
     #perform all transistion checks
     def CheckTransistions(self):
