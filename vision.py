@@ -8,6 +8,7 @@ from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2 as pc2
 from cv_bridge import CvBridge, CvBridgeError
+from time import sleep
 
 
 class Vision:
@@ -29,7 +30,7 @@ class Vision:
         self.__findRed = True
         self.__findGreen = True
         self.__findBlue = True
-        self.__findYellow = False
+        self.__findYellow = True
         
         
         
@@ -132,6 +133,8 @@ class Vision:
             self.__findRed = value
         if color == "YELLOW":
             self.__findYellow = value
+
+        sleep(0.5) #wait for changes to take effect
 
     #get a list of all the color values
     def GetFind(self):
