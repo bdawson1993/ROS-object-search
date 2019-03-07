@@ -9,8 +9,8 @@ class PatrolState(MachineState.MachineState):
     def __init__(self, machine, transistions):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
-        self.__routeX = [0]
-        self.__routeY = [0]
+        self.__routeX = [0, -3]
+        self.__routeY = [0, 0]
         self.__currentNode = 0
 
 
@@ -25,6 +25,7 @@ class PatrolState(MachineState.MachineState):
         goal.target_pose.pose.position.y = self.__routeY[self.__currentNode]
         goal.target_pose.pose.orientation.w = 1.0
         self.__client.send_goal(goal)
+    
         
 
         self.Transitions()[0].SetClient(self.__client)
@@ -40,6 +41,7 @@ class PatrolState(MachineState.MachineState):
             self.__currentNode += 1
         else:
             self.__currentNode = 0
+        
         self.__client = 0
         
         
