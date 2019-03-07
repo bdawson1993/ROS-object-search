@@ -31,7 +31,9 @@ class MoveState(MachineState.MachineState):
 
         
 
-        self.__pub.publish(t)       
+        self.__pub.publish(t)     
+
+    
         
     
     

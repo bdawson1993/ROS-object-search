@@ -29,7 +29,7 @@ class Vision:
         self.__findRed = True
         self.__findGreen = True
         self.__findBlue = True
-        self.__findYellow = True
+        self.__findYellow = False
         
         
         
