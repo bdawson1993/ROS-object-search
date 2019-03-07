@@ -35,7 +35,7 @@ class Search:
         
         #create move state
         moveTrans = []
-        moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
+        #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnBump.OnBump(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
         
@@ -47,6 +47,7 @@ class Search:
         #create patrol state
         patrolTrans = []
         patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
+        patrolTrans.append(OnSeeObject.OnSeeObject(mach))
         patrolState = PatrolState.PatrolState(mach, patrolTrans)
 
         #add mach state
