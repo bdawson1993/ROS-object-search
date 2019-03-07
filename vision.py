@@ -135,7 +135,13 @@ class Vision:
 
     #get a list of all the color values
     def GetFind(self):
-        return {self.__findBlue, self.__findGreen, self.__findRed, self.__findYellow}
+        values = []
+        values.append(self.__findBlue)
+        values.append(self.__findGreen)
+        values.append(self.__findRed)
+        values.append(self.__findYellow)
+
+        return values
 
     def LeftImageCount(self):
         return (self.__leftImage > 253).sum()
