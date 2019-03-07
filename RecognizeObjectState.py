@@ -7,6 +7,7 @@ class RecognizeObjectState(MachineState.MachineState):
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
+        self.__threshold = 300
 
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
@@ -15,43 +16,52 @@ class RecognizeObjectState(MachineState.MachineState):
         if count > 600:
             while True:
                 #try and narrow down what object the robot is looking at
-                if self.__values[0] == True:
+                if self.__values[0] == True: #check blue
                     self.GetMachine().GetVision().SetFind("BLUE", False)
                     count = (self.GetMachine().GetVision().GetImage() > 253).sum()
-                    if count < 700:
+                    if count < self.__threshold:
                         print "Found Blue"
-                        self.__values[0] = False
+                        #self.__values[0] = False
                         break
+                    else:
+                        self.GetMachine().GetVision().SetFind("BLUE", True)
                         
-                if self.__values[1] == True:
+                if self.__values[1] == True: #check green
                     self.GetMachine().GetVision().SetFind("GREEN", False)
                     count = (self.GetMachine().GetVision().GetImage() > 253).sum()
-                    if count < 700:
+                    if count < self.__threshold:
                         print "Found Green"
-                        self.__values[1] = False
+                        #self.__values[1] = False
                         break
+                    else:
+                        self.GetMachine().GetVision().SetFind("GREEN", True)
 
-                if self.__values[2] == True:
+
+                if self.__values[2] == True: #check red
                     self.GetMachine().GetVision().SetFind("RED", False)
                     count = (self.GetMachine().GetVision().GetImage() > 253).sum()
-                    if count < 700:
+                    if count < self.__threshold:
                         print "Found Red"
-                        self.__values[2] = False
+                        #self.__values[2] = False
                         break
+                    else:
+                        self.GetMachine().GetVision().SetFind("RED", True)
 
-                if self.__values[3] == True:
+                if self.__values[3] == True: #check yellow
                     self.GetMachine().GetVision().SetFind("YELLOW", False)
                     count = (self.GetMachine().GetVision().GetImage() > 253).sum()
-                    if count < 700:
+                    if count < self.__threshold:
                         print "Found Yellow"
-                        self.__values[3] = False
+                        #self.__values[3] = False
                         break
+                    else:
+                        self.GetMachine().GetVision().SetFind("YELLOW", True)
 
         #set all values calculated back to vision
-        self.GetMachine().GetVision().SetFind("BLUE", self.__values[0])
-        self.GetMachine().GetVision().SetFind("GREEN", self.__values[1])
-        self.GetMachine().GetVision().SetFind("RED", self.__values[2])
-        self.GetMachine().GetVision().SetFind("YELLOW", self.__values[3])
+        #self.GetMachine().GetVision().SetFind("BLUE", self.__values[0])
+        #self.GetMachine().GetVision().SetFind("GREEN", self.__values[1])
+        #self.GetMachine().GetVision().SetFind("RED", self.__values[2])
+        #self.GetMachine().GetVision().SetFind("YELLOW", self.__values[3])
 
         #force transition to set true
         self.Transitions()[0].SetMoveToNextState(True)
