@@ -13,6 +13,8 @@ class OnBump(Transition.Transition):
     def CheckTransition(self):
         if self.__bump == True:
             self.SetMoveToNextState(True)
+            self.__bump = False
+            
 
     def processBumpData(self, data):
         #BumperEvent.
