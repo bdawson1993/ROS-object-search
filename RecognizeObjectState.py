@@ -1,4 +1,6 @@
 from StateMachine import MachineState
+import rospy
+from geometry_msgs.msg import Twist
 
 class RecognizeObjectState(MachineState.MachineState):
     def __init__(self, machine, transistions):
@@ -7,12 +9,12 @@ class RecognizeObjectState(MachineState.MachineState):
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
-        self.__threshold = 300
+        self.__threshold = 700
 
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
         
-        #print values
+        print count
         if count > 600:
             while True:
                 #try and narrow down what object the robot is looking at
@@ -65,6 +67,13 @@ class RecognizeObjectState(MachineState.MachineState):
 
         #force transition to set true
         self.Transitions()[0].SetMoveToNextState(True)
+
+    def StateChange(self):
+        print "Rec chnage"
+        pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 2)
+        t = Twist()
+        t.linear.x = -1.3
+        pub.publish(t)
 
 
         

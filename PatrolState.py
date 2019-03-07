@@ -10,8 +10,9 @@ class PatrolState(MachineState.MachineState):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
         self.__routeX = [0, -3]
-        self.__routeY = [0, 0]
+        self.__routeY = [0, -0.3]
         self.__currentNode = 0
+        
 
 
     def Start(self):
@@ -37,12 +38,17 @@ class PatrolState(MachineState.MachineState):
         print "Patrolling..."
 
     def StateChange(self):
-        if self.__currentNode < len(self.__routeX) - 1:
-            self.__currentNode += 1
-        else:
-            self.__currentNode = 0
+        if self.__client.get_state() == 3:
+            if self.__currentNode < len(self.__routeX) - 1:
+                self.__currentNode += 1
+            else:
+                self.__currentNode = 0
         
-        self.__client = 0
+        self.__client.cancel_goal()
+
+    def __del__(self):
+        self.__client.cancel_goal()
+
         
         
         
