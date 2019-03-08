@@ -35,6 +35,7 @@ class Search:
         
         #create move state
         moveTrans = []
+        
         #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnBump.OnBump(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        

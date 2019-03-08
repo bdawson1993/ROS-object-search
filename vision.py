@@ -127,7 +127,7 @@ class Vision:
     def SetFind(self, color, value):
         if color == "BLUE":
             self.__findBlue = value
-        if color == "Green":
+        if color == "GREEN":
             self.__findGreen = value
         if color == "RED":
             self.__findRed = value

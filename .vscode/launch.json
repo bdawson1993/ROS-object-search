@@ -9,7 +9,7 @@
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
             "request": "launch",
-            "program": "/home/rosbox/catkin_ws/src/RoboticsAssignment/scripts/main.py",
+            "program": "/home/student/ROS-object-search/main.py",
             "console": "integratedTerminal"
         },
         {

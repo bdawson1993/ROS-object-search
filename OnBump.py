@@ -17,7 +17,6 @@ class OnBump(Transition.Transition):
             
 
     def processBumpData(self, data):
-        #BumperEvent.
         self.__bump = data.PRESSED
 
     

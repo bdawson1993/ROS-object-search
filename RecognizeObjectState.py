@@ -9,7 +9,7 @@ class RecognizeObjectState(MachineState.MachineState):
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
-        self.__threshold = 700
+        self.__threshold = 20000
 
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
@@ -72,7 +72,7 @@ class RecognizeObjectState(MachineState.MachineState):
         print "Rec chnage"
         pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 2)
         t = Twist()
-        t.linear.x = -1.3
+        t.linear.x = -0.5
         pub.publish(t)
 
 

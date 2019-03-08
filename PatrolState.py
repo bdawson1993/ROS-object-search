@@ -9,8 +9,8 @@ class PatrolState(MachineState.MachineState):
     def __init__(self, machine, transistions):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
-        self.__routeX = [0, -3]
-        self.__routeY = [0, -0.3]
+        self.__routeX = [0.0, -4.0]
+        self.__routeY = [0.0, -0.3]
         self.__currentNode = 0
         
 
@@ -37,6 +37,11 @@ class PatrolState(MachineState.MachineState):
     def Update(self):
         print "Patrolling..."
 
+        if self.__client.get_state() == 3:
+            self.__client.cancel_all_goals()
+
+
+
     def StateChange(self):
         if self.__client.get_state() == 3:
             if self.__currentNode < len(self.__routeX) - 1:
@@ -44,10 +49,10 @@ class PatrolState(MachineState.MachineState):
             else:
                 self.__currentNode = 0
         
-        self.__client.cancel_goal()
+        self.__client.cancel_all_goals()
 
     def __del__(self):
-        self.__client.cancel_goal()
+        self.__client.cancel_all_goals()
 
         
         
