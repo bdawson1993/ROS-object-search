@@ -15,7 +15,7 @@ class RecognizeObjectState(MachineState.MachineState):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
         
         print count
-        if count > 600:
+        if count > 2000:
             while True:
                 #try and narrow down what object the robot is looking at
                 if self.__values[0] == True: #check blue
