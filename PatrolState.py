@@ -35,8 +35,6 @@ class PatrolState(MachineState.MachineState):
         
 
     def Update(self):
-        print "Patrolling..."
-
         if self.__client.get_state() == 3:
             self.__client.cancel_all_goals()
 

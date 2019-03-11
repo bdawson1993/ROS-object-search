@@ -69,7 +69,6 @@ class RecognizeObjectState(MachineState.MachineState):
         self.Transitions()[0].SetMoveToNextState(True)
 
     def StateChange(self):
-        print "Rec chnage"
         pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 2)
         t = Twist()
         t.linear.x = -0.5

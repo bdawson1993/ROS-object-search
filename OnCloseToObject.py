@@ -23,7 +23,7 @@ class OnBump(Transition.Transition):
     def processScanData(self, data):
         dataLen = len(data.ranges)
         scanMean = sum(data.ranges[dataLen/2:dataLen/2 + 5])/5
-        if scanMean < 1:
+        if scanMean < 0.5:
             self.SetMoveToNextState(True)
 
     def processBumpData(self, data):
