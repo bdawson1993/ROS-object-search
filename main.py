@@ -48,7 +48,7 @@ class Search:
         #create patrol state
         patrolTrans = []
         patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
-        patrolTrans.append(OnSeeObject.OnSeeObject(mach))
+        #patrolTrans.append(OnSeeObject.OnSeeObject(mach))
         patrolState = PatrolState.PatrolState(mach, patrolTrans)
 
         #add mach state
@@ -67,11 +67,6 @@ class Search:
             mach.Update()
             
             
-        
-        
-                
-        
-        
 if __name__ == "__main__":
     s = Search()
     
