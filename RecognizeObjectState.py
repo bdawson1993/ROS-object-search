@@ -9,7 +9,7 @@ class RecognizeObjectState(MachineState.MachineState):
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
-        self.__threshold = 700
+        self.__threshold = 8500
 
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
