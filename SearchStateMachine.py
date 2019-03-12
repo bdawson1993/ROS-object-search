@@ -25,7 +25,7 @@ class SearchStateMachine(StateMachine.StateMachine):
         self.__objectLoc.append(ob)
 
     def EndTime(self):
-        fi = file("tesData", 'w')
+        fi = file("tesData", 'w+r')
         end = time.time()
         print  "All objects in: " + str(end-self.__start) + " Seconds"
         fi.write("Time Taken: " + str(end-self.__start) + " Seconds")
