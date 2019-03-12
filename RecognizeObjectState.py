@@ -1,11 +1,14 @@
 from StateMachine import MachineState
 import rospy
 from geometry_msgs.msg import Twist
+from nav_msgs.msg import geometry_msgs
 
 class RecognizeObjectState(MachineState.MachineState):
     def __init__(self, machine, transistions):
         super(RecognizeObjectState, self).__init__("Recognize Object", machine, transistions)
-        
+        #self.__odom = rospy.Subscriber("/odom", Pose, self.proccessOdom)
+        self.__x = 0.0
+        self.__y = 0.0
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
@@ -24,6 +27,7 @@ class RecognizeObjectState(MachineState.MachineState):
                     if count < self.__threshold:
                         print "Found Blue"
                         #self.__values[0] = False
+                        #self.GetMachine().AddLoc("Blue", self.__x, self.__y)
                         break
                     else:
                         self.GetMachine().GetVision().SetFind("BLUE", True)
@@ -73,6 +77,11 @@ class RecognizeObjectState(MachineState.MachineState):
         t = Twist()
         t.linear.x = -0.5
         pub.publish(t)
+
+    def proccessOdom(self, data):
+        self.__x = data.x
+        self.__y = data.y
+        print self.__x
 
 
         

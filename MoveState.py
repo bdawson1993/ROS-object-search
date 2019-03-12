@@ -27,7 +27,7 @@ class MoveState(MachineState.MachineState):
         #print left
         #print right
 
-        print potColl
+       # print potColl
         if potColl == False:
             #try to centre image
             if left >= right:

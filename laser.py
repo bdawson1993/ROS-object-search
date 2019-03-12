@@ -26,7 +26,7 @@ class Laser:
         self.__rightScan = sum(data.ranges[dataLen - self.__scanThreshold:dataLen])/self.__scanThreshold
 
         #print "Front Scan " + str(self.__frontScan)
-        print "Left Scan "  + str(self.__leftScan)
+        #print "Left Scan "  + str(self.__leftScan)
         #print "Right Scan "  + str(self.__rightScan)
 
 
