@@ -17,16 +17,34 @@ class MoveState(MachineState.MachineState):
 
         left = self.GetMachine().GetVision().LeftImageCount()
         right = self.GetMachine().GetVision().RightImageCount()
+        leftLaser = self.GetMachine().GetLaser().GetLeft()
+        rightLaser = self.GetMachine().GetLaser().GetRight()
+
+        potColl = (leftLaser < 0.5)
+        potColl = (rightLaser < 0.5)
 
         #check if an object is in view
         #print left
         #print right
 
+
+        if potColl == False:
+            #try to centre image
+            if left >= right:
+                t.angular.z = 0.3
+            else:#rot right
+                t.angular.z = -0.3
+        else: #avoid pot collsions
+            if leftLaser < 0.5:
+                t.angular = -0.3
+            if rightLaser < 0.5:
+                t.angular = 0.
+
+
         
-        if left >= right:
-            t.angular.z = 0.3
-        else:#rot right
-            t.angular.z = -0.3
+
+
+        
 
 
         
