@@ -9,13 +9,17 @@ class RecognizeObjectState(MachineState.MachineState):
 
     def Start(self):
         self.__values = self.GetMachine().GetVision().GetFind()
+<<<<<<< HEAD
         self.__threshold = 8500
+=======
+        self.__threshold = 20000
+>>>>>>> 12ac05d69fd03d0c8d5389a773e7d1aa495a743d
 
     def Update(self):
         count = (self.GetMachine().GetVision().GetImage() > 253).sum()
         
         print count
-        if count > 600:
+        if count > 2000:
             while True:
                 #try and narrow down what object the robot is looking at
                 if self.__values[0] == True: #check blue
@@ -69,10 +73,9 @@ class RecognizeObjectState(MachineState.MachineState):
         self.Transitions()[0].SetMoveToNextState(True)
 
     def StateChange(self):
-        print "Rec chnage"
         pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 2)
         t = Twist()
-        t.linear.x = -1.3
+        t.linear.x = -0.5
         pub.publish(t)
 
 

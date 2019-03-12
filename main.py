@@ -11,12 +11,15 @@ import StartState
 import PatrolState
 import MoveState
 import RecognizeObjectState
+import IdleState
 
 import OnTimerEnd
 import OnReachedGoal
 import OnEmptyVision
 import OnBump
 import OnSeeObject
+import OnFoundAll
+
 
 import cv2
 
@@ -35,6 +38,7 @@ class Search:
         
         #create move state
         moveTrans = []
+        
         #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnBump.OnBump(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
@@ -42,19 +46,27 @@ class Search:
         #create reg state
         regTrans = []
         regTrans.append(OnEmptyVision.OnEmptyVision(mach))
+        regTrans.append(OnFoundAll.OnFoundAll(mach))
         regState = RecognizeObjectState.RecognizeObjectState(mach, regTrans)
         
         #create patrol state
         patrolTrans = []
         patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
         patrolTrans.append(OnSeeObject.OnSeeObject(mach))
+        patrolTrans.append(OnFoundAll.OnFoundAll(mach))
         patrolState = PatrolState.PatrolState(mach, patrolTrans)
 
-        #add mach state
+        #idle state
+        idleTrans = []
+        idleState = IdleState.IdleState(mach, idleTrans)
+
+        #add mach states
         mach.AddState(startState)
         mach.AddState(moveState)
         mach.AddState(regState)
         mach.AddState(patrolState)
+        mach.AddState(idleState)
+        
         
         
         #finish loading 
@@ -66,11 +78,6 @@ class Search:
             mach.Update()
             
             
-        
-        
-                
-        
-        
 if __name__ == "__main__":
     s = Search()
     
