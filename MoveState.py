@@ -27,7 +27,7 @@ class MoveState(MachineState.MachineState):
         #print left
         #print right
 
-
+        print potColl
         if potColl == False:
             #try to centre image
             if left >= right:
@@ -36,9 +36,9 @@ class MoveState(MachineState.MachineState):
                 t.angular.z = -0.3
         else: #avoid pot collsions
             if leftLaser < 0.5:
-                t.angular = -0.3
+                t.angular = -0.5
             if rightLaser < 0.5:
-                t.angular = 0.
+                t.angular = 0.5
 
 
         
