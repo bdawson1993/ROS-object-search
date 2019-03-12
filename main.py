@@ -16,7 +16,7 @@ import IdleState
 import OnTimerEnd
 import OnReachedGoal
 import OnEmptyVision
-import OnBump
+import OnCloseToObject
 import OnSeeObject
 import OnFoundAll
 
@@ -40,7 +40,7 @@ class Search:
         moveTrans = []
         
         #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
-        moveTrans.append(OnBump.OnBump(mach))
+        moveTrans.append(OnCloseToObject.OnCloseToObject(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
         
         #create reg state
