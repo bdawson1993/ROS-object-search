@@ -23,11 +23,7 @@ class MoveState(MachineState.MachineState):
         potColl = (leftLaser < 0.5)
         potColl = (rightLaser < 0.5)
 
-        #check if an object is in view
-        #print left
-        #print right
-
-       # print potColl
+       
         if potColl == False:
             #try to centre image
             if left >= right:
@@ -35,20 +31,17 @@ class MoveState(MachineState.MachineState):
             else:#rot right
                 t.angular.z = -0.3
         else: #avoid pot collsions
-            t.linear.x = 0
+            t.linear.x = 0.0
             if leftLaser < 0.5:
-                t.angular = -0.5
+                t.angular.z = 0.5
             if rightLaser < 0.5:
-                t.angular = 0.5
+                t.angular.z = -0.5
 
 
         
 
 
-        
-
-
-        
+    
 
         self.__pub.publish(t)     
 

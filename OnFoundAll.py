@@ -16,6 +16,7 @@ class OnFoundAll(Transition.Transition):
 
         if count == 0:
             self.SetMoveToNextState(True)
+            self.GetMachine().EndTime()
 
 
 

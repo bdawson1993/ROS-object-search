@@ -1,6 +1,8 @@
 from StateMachine import StateMachine
 import vision
 import laser
+import time
+import io
 
 class SearchStateMachine(StateMachine.StateMachine):
     def __init__(self):
@@ -8,6 +10,7 @@ class SearchStateMachine(StateMachine.StateMachine):
         self.__vision = vision.Vision()
         self.__laser = laser.Laser()
         self.__objectLoc = []
+        self.__start = time.time()
 
 
     def GetVision(self):
@@ -20,6 +23,13 @@ class SearchStateMachine(StateMachine.StateMachine):
         ob = ObjectLoc()
         ob.SetLoc(name,x, y)
         self.__objectLoc.append(ob)
+
+    def EndTime(self):
+        fi = file("tesData", 'w')
+        end = time.time()
+        print  "All objects in: " + str(end-self.__start) + " Seconds"
+        fi.write("Time Taken: " + str(end-self.__start) + " Seconds")
+        fi.close()
 
 class ObjectLoc:
     def __init__(self):
