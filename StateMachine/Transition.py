@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 class Transition(object):
-    def __init__(self, stateName, stateMachine):
+    def __init__(self, stateName,transName ,stateMachine):
         self.__nextState = stateName
         self.__moveToNextState = False
         self.__stateMachine = stateMachine
+        self.__transitionName = transName
           
     def NextState(self):
         return self.__nextState
@@ -22,5 +23,10 @@ class Transition(object):
         
     def GetMachine(self):
         return self.__stateMachine
+
+    def GetTransitionName(self):
+        return self.__transitionName
+
+    
         
 

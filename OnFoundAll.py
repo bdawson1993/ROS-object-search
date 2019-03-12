@@ -2,7 +2,7 @@ from StateMachine import Transition
 
 class OnFoundAll(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnFoundAll,self).__init__("Idle", stateMachine)
+        super(OnFoundAll,self).__init__("Idle", "On Found All", stateMachine)
         
 
 

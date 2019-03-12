@@ -5,7 +5,7 @@ from StateMachine import MachineState
 
 class OnTimerEnd(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnTimerEnd,self).__init__("Patrol", stateMachine)
+        super(OnTimerEnd,self).__init__("Patrol", "On Timer End", stateMachine)
         self.__interval = 30
         self.__counter = 0
 

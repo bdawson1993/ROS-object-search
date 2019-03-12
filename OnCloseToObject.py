@@ -8,13 +8,13 @@ from StateMachine import MachineState
 
 class OnCloseToObject(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnCloseToObject,self).__init__("Recognize Object", stateMachine)
+        super(OnCloseToObject,self).__init__("Recognize Object","On Close To Object", stateMachine)
         
 
     def CheckTransition(self):
         las = self.GetMachine().GetLaser()
 
-        if las.GetFront() < 0.5:
+        if las.GetFront() < 1:
             self.SetMoveToNextState(True)
 
     

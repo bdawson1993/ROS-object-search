@@ -5,7 +5,7 @@ from StateMachine import MachineState
 
 class OnEmptyVision(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnEmptyVision,self).__init__("Patrol", stateMachine)
+        super(OnEmptyVision,self).__init__("Patrol","On Empty Vision", stateMachine)
         
        
         

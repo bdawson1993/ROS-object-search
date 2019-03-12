@@ -12,6 +12,7 @@ class StateMachine(object):
         self.__states = list()
         self.__currentState = object()
         self.__hasLoaded = False
+        self.__updateRate = 0.5
         
       
      #add state to state machine
@@ -30,7 +31,7 @@ class StateMachine(object):
             self.__currentState.Update()
             self.__currentState.CheckTransistions()
             self.CheckTransition()
-            sleep(0.5)
+            sleep(self.__updateRate)
      
     #perform tran checks on current state      
     def CheckTransition(self):
@@ -51,6 +52,17 @@ class StateMachine(object):
 
     def GetCurrentState(self):
         return self.__currentState.StateName()
+
+    def PrintInfo(self):
+        print "State Machine: \n"
+        print "Update Rate: " + str(self.__updateRate)
+
+        for state in self.__states:
+            print "State Name: " + state.StateName()
+            print "Transitions:"
+            for trans in state.Transitions():
+                print " -------" + trans.GetTransitionName()
+            print "\n"
                 
         
         

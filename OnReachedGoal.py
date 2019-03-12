@@ -6,7 +6,7 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
 class OnReachedGoal(Transition.Transition):
     def __init__(self, stateMachine):
-        super(OnReachedGoal,self).__init__("Start", stateMachine)
+        super(OnReachedGoal,self).__init__("Start", "On Reached Goal", stateMachine)
         
         
 

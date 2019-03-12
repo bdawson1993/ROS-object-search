@@ -71,6 +71,7 @@ class Search:
         
         #finish loading 
         mach.FinishLoading() 
+        mach.PrintInfo()
         self.__pub = rospy.Publisher("find", String, queue_size=1)
         
         while not rospy.is_shutdown():
