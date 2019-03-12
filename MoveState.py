@@ -35,6 +35,7 @@ class MoveState(MachineState.MachineState):
             else:#rot right
                 t.angular.z = -0.3
         else: #avoid pot collsions
+            t.linear.x = 0
             if leftLaser < 0.5:
                 t.angular = -0.5
             if rightLaser < 0.5:
