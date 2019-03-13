@@ -22,14 +22,14 @@ class Laser:
         #calculte scan data
         dataLen = len(data.ranges)
         self.__frontScan = sum(data.ranges[dataLen/2:dataLen/2 + self.__scanThreshold])/self.__scanThreshold
-        self.__leftScan = sum(data.ranges[0:self.__scanThreshold])/self.__scanThreshold
+        self.__leftScan = data.ranges[dataLen/2-self.__scanThreshold*2]
         self.__rightScan = sum(data.ranges[dataLen - self.__scanThreshold:dataLen])/self.__scanThreshold
 
-        
-        print "Front Scan " + str(self.__frontScan)
-        print "Left Scan "  + str(self.__leftScan)
-        print "Right Scan "  + str(self.__rightScan)
-        print "----------------------"
+        print data.ranges[dataLen/2-self.__scanThreshold*2]
+        #print "Front Scan " + str(self.__frontScan)
+       # print "Left Scan "  + str(self.__leftScan)
+        #print "Right Scan "  + str(self.__rightScan)
+        #print "----------------------"
 
 
     def GetLeft(self):

@@ -20,8 +20,8 @@ class MoveState(MachineState.MachineState):
         leftLaser = self.GetMachine().GetLaser().GetLeft()
         rightLaser = self.GetMachine().GetLaser().GetRight()
 
-        potColl = (leftLaser < 0.5)
-        potColl = (rightLaser < 0.5)
+        potColl = (leftLaser <= 0.5)
+        potColl = (rightLaser <= 0.5)
 
        
         if potColl == False:
