@@ -19,7 +19,7 @@ import OnEmptyVision
 import OnCloseToObject
 import OnSeeObject
 import OnFoundAll
-
+import OnBump
 
 import cv2
 
@@ -41,6 +41,8 @@ class Search:
         
         #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnCloseToObject.OnCloseToObject(mach))
+        moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
+        moveTrans.append(OnBump.OnBump(mach))
         moveState = MoveState.MoveState(mach, moveTrans)        
         
         #create reg state
@@ -52,7 +54,7 @@ class Search:
         #create patrol state
         patrolTrans = []
         patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
-        patrolTrans.append(OnSeeObject.OnSeeObject(mach))
+        #patrolTrans.append(OnSeeObject.OnSeeObject(mach))
         patrolTrans.append(OnFoundAll.OnFoundAll(mach))
         patrolState = PatrolState.PatrolState(mach, patrolTrans)
 

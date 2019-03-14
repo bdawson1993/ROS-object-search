@@ -14,7 +14,7 @@ class OnCloseToObject(Transition.Transition):
     def CheckTransition(self):
         las = self.GetMachine().GetLaser()
 
-        if las.GetFront() < 1:
+        if las.GetFront() < 1.5:
             self.SetMoveToNextState(True)
 
     

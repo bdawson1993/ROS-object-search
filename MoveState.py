@@ -9,7 +9,7 @@ class MoveState(MachineState.MachineState):
         super(MoveState, self).__init__("Move", machine, transistions)
 
     def Start(self):
-        self.__pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 2)
+        self.__pub = rospy.Publisher("/mobile_base/commands/velocity", Twist, queue_size = 1)
 
     def Update(self):
         t = Twist()
@@ -20,10 +20,11 @@ class MoveState(MachineState.MachineState):
         leftLaser = self.GetMachine().GetLaser().GetLeft()
         rightLaser = self.GetMachine().GetLaser().GetRight()
 
-        potColl = (leftLaser <= 0.5)
-        potColl = (rightLaser <= 0.5)
+        potColl = (leftLaser <= 1.5)
+        potColl = (rightLaser <= 1.5)
 
-       
+        #print leftLaser
+        #print rightLaser 
         if potColl == False:
             #try to centre image
             if left >= right:
@@ -31,10 +32,9 @@ class MoveState(MachineState.MachineState):
             else:#rot right
                 t.angular.z = -0.3
         else: #avoid pot collsions
-            t.linear.x = 0.0
-            if leftLaser < 0.5:
+            if leftLaser < 1.0:
                 t.angular.z = 0.5
-            if rightLaser < 0.5:
+            if rightLaser < 1.0:
                 t.angular.z = -0.5
 
 

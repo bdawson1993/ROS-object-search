@@ -9,8 +9,8 @@ class PatrolState(MachineState.MachineState):
     def __init__(self, machine, transistions):
         super(PatrolState, self).__init__("Patrol", machine, transistions)
 
-        self.__routeX = [0.0, 0.0, 1.0, -4.0]
-        self.__routeY = [0.0, 4.0, -4.5,-0.3]
+        self.__routeX = [0.0, 0.0, 1.0, -4.0, -4.0]
+        self.__routeY = [0.0, 4.0, -4.5,-0.3, 3.0]
         self.__currentNode = 0
         
 

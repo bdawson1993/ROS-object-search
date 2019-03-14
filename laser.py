@@ -22,10 +22,10 @@ class Laser:
         #calculte scan data
         dataLen = len(data.ranges)
         self.__frontScan = sum(data.ranges[dataLen/2:dataLen/2 + self.__scanThreshold])/self.__scanThreshold
-        self.__leftScan = data.ranges[dataLen/2-self.__scanThreshold*2]
-        self.__rightScan = sum(data.ranges[dataLen - self.__scanThreshold:dataLen])/self.__scanThreshold
+        self.__leftScan = data.ranges[dataLen / 8]
+        self.__rightScan = data.ranges[(dataLen / 2) + (dataLen / 8)]
 
-        print data.ranges[dataLen/2-self.__scanThreshold*2]
+        #print data.ranges[0]
         #print "Front Scan " + str(self.__frontScan)
        # print "Left Scan "  + str(self.__leftScan)
         #print "Right Scan "  + str(self.__rightScan)
