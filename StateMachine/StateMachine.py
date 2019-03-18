@@ -45,9 +45,11 @@ class StateMachine(object):
     def ChangeState(self, stateName):
         for state in self.__states:
             if(state.StateName() == stateName):
+                nam = self.__currentState.StateName()
                 self.__currentState.StateChange()
                 self.__currentState = state
                 self.__currentState.Start()
+                print nam + " Changed to " + self.__currentState.StateName() + "\n"
                 break #break when state has been found
 
     def GetCurrentState(self):

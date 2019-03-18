@@ -12,7 +12,6 @@ class OnReachedGoal(Transition.Transition):
 
     def CheckTransition(self):
         if self.__client.get_state() == 3:
-            print "Change"
             self.SetMoveToNextState(True)
         
     def SetClient(self, client):

@@ -54,7 +54,7 @@ class Search:
         #create patrol state
         patrolTrans = []
         patrolTrans.append(OnReachedGoal.OnReachedGoal(mach))
-        #patrolTrans.append(OnSeeObject.OnSeeObject(mach))
+        patrolTrans.append(OnSeeObject.OnSeeObject(mach))
         patrolTrans.append(OnFoundAll.OnFoundAll(mach))
         patrolState = PatrolState.PatrolState(mach, patrolTrans)
 

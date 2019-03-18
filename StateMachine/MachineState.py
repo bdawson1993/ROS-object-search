@@ -20,16 +20,16 @@ class MachineState(object):
     
     #perform any startup actions
     def Start(self):
-        raise NotImplementedError()
+        pass
     
     #peform the update step of the state
     def Update(self):
-        raise NotImplementedError()
+        pass
         
     #cleanup state before change
     def StateChange(self):
-        print "State Changed "
-        
+        pass
+
     #perform all transistion checks
     def CheckTransistions(self):
         for i in self.__transitions:            

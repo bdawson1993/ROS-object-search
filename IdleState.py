@@ -20,5 +20,4 @@ class IdleState(MachineState.MachineState):
         goal.target_pose.pose.orientation.w = 1.0
         self.__client.send_goal(goal)
 
-    def Update(self):
-        print "Waiting"
+    
