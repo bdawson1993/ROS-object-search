@@ -13,7 +13,7 @@ class MoveState(MachineState.MachineState):
 
     def Update(self):
         t = Twist()
-        t.linear.x = 0.3
+        t.linear.x = 0.5
 
         left = self.GetMachine().GetVision().LeftImageCount()
         right = self.GetMachine().GetVision().RightImageCount()
@@ -33,9 +33,9 @@ class MoveState(MachineState.MachineState):
                 t.angular.z = -0.3
         else: #avoid pot collsions
             if leftLaser < 1.0:
-                t.angular.z = 0.5
+                t.angular.z = 1.0
             if rightLaser < 1.0:
-                t.angular.z = -0.5
+                t.angular.z = -1.0
 
 
         
