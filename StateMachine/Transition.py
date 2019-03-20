@@ -5,10 +5,12 @@ class Transition(object):
         self.__moveToNextState = False
         self.__stateMachine = stateMachine
         self.__transitionName = transName
-          
+
+    #get the name of the next state    
     def NextState(self):
         return self.__nextState
-        
+    
+    
     def SetMoveToNextState(self,value):
         self.__moveToNextState = value        
     
