@@ -19,11 +19,13 @@ class SearchStateMachine(StateMachine.StateMachine):
     def GetLaser(self):
         return self.__laser
 
+    #add loc to array - unused
     def AddLoc(self, name, x,y):
         ob = ObjectLoc()
         ob.SetLoc(name,x, y)
         self.__objectLoc.append(ob)
 
+    #end time print and save to file
     def EndTime(self):
         fi = open("tesData", 'a+')
         end = time.time()
@@ -31,6 +33,7 @@ class SearchStateMachine(StateMachine.StateMachine):
         fi.write("Time Taken: " + str(end-self.__start) + " Seconds \n")
         fi.close()
 
+#save loc of found objects - unused
 class ObjectLoc:
     def __init__(self):
         self.__name = str()

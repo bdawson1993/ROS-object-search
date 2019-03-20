@@ -38,8 +38,6 @@ class Search:
         
         #create move state
         moveTrans = []
-        
-        #moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnCloseToObject.OnCloseToObject(mach))
         moveTrans.append(OnEmptyVision.OnEmptyVision(mach))
         moveTrans.append(OnBump.OnBump(mach))
@@ -62,15 +60,14 @@ class Search:
         idleTrans = []
         idleState = IdleState.IdleState(mach, idleTrans)
 
-        #add mach states
+        #add mach states - first state added is treated as start state
         mach.AddState(patrolState)
         mach.AddState(startState)
         mach.AddState(moveState)
         mach.AddState(regState)
         mach.AddState(idleState)
         
-        
-        
+    
         #finish loading 
         mach.FinishLoading() 
         mach.PrintInfo()

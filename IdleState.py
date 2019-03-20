@@ -22,7 +22,7 @@ class IdleState(MachineState.MachineState):
         self.__client.send_goal(goal)
 
     def Update(self):
-        if self.__client.get_state() == 3:
+        if self.__client.get_state() == 3: #when complete close state machine
             self.GetMachine().Close()
 
     

@@ -19,7 +19,7 @@ class OnBump(Transition.Transition):
             self.SetMoveToNextState(True)
             self.__onBump = False #reset bump
             t = Twist()
-            t.linear.x = -0.5
+            t.linear.x = -0.5 # reverse on bump
             self.__pub.publish(t)
 
     def processBump(self, data):

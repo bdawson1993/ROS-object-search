@@ -53,9 +53,11 @@ class StateMachine(object):
                 print nam + " Changed to " + self.__currentState.StateName() + "\n"
                 break #break when state has been found
 
+    #get the current state the machine is executing
     def GetCurrentState(self):
         return self.__currentState.StateName()
 
+    #print general info about the state machine
     def PrintInfo(self):
         print "State Machine: \n"
         print "Update Rate: " + str(self.__updateRate)
@@ -67,14 +69,14 @@ class StateMachine(object):
                 print " -------" + trans.GetTransitionName()
             print "\n"
 
-    
+    #start machine shutdown
     def Close(self):
         print "Closing Machine...Goodbye"
         self.__isNotClosed = False
         self.__hasLoaded = False
 
 
-
+    #return if the machine is closed
     def IsNotClosed(self):
         return self.__isNotClosed
                 

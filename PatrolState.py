@@ -42,6 +42,7 @@ class PatrolState(MachineState.MachineState):
 
 
     def StateChange(self):
+        #increment route if goal reached
         if self.__client.get_state() == 3:
             if self.__currentNode < len(self.__routeX) - 1:
                 self.__currentNode += 1
