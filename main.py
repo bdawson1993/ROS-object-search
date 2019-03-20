@@ -76,7 +76,7 @@ class Search:
         mach.PrintInfo()
         self.__pub = rospy.Publisher("find", String, queue_size=1)
         
-        while not rospy.is_shutdown():
+        while not rospy.is_shutdown() and mach.IsNotClosed():
             self.__pub.publish("State Machine: " + "State Name: " + mach.GetCurrentState())
             mach.Update()
             

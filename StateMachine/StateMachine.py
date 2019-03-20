@@ -13,6 +13,7 @@ class StateMachine(object):
         self.__currentState = object()
         self.__hasLoaded = False
         self.__updateRate = 0.5
+        self.__isNotClosed = True
         
       
      #add state to state machine
@@ -65,6 +66,17 @@ class StateMachine(object):
             for trans in state.Transitions():
                 print " -------" + trans.GetTransitionName()
             print "\n"
+
+    
+    def Close(self):
+        print "Closing Machine...Goodbye"
+        self.__isNotClosed = False
+        self.__hasLoaded = False
+
+
+
+    def IsNotClosed(self):
+        return self.__isNotClosed
                 
         
         

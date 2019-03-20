@@ -12,7 +12,7 @@ class IdleState(MachineState.MachineState):
         self.__client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         self.__client.wait_for_server()
         
-        ##move to start postion
+        #move to start postion
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
@@ -20,5 +20,9 @@ class IdleState(MachineState.MachineState):
         goal.target_pose.pose.position.y = 0
         goal.target_pose.pose.orientation.w = 1.0
         self.__client.send_goal(goal)
+
+    def Update(self):
+        if self.__client.get_state() == 3:
+            self.GetMachine().Close()
 
     

@@ -35,6 +35,8 @@ class MachineState(object):
         for i in self.__transitions:            
             i.CheckTransition()
             
+    
+
      
     #return all transition to state machine        
     def Transitions(self):
