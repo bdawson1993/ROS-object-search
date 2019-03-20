@@ -15,7 +15,7 @@ class OnBump(Transition.Transition):
     def CheckTransition(self):
         if self.__onBump == True:
             self.SetMoveToNextState(True)
-            self.__onBump = False
+            self.__onBump = False #reset bump
 
     def processBump(self, data):
         self.__onBump = data.PRESSED

@@ -19,6 +19,7 @@ class PatrolState(MachineState.MachineState):
         self.__client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         self.__client.wait_for_server()
 
+        #move to current node on route
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()

@@ -11,7 +11,8 @@ class IdleState(MachineState.MachineState):
     def Start(self):
         self.__client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         self.__client.wait_for_server()
-
+        
+        ##move to start postion
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
         goal.target_pose.header.stamp = rospy.Time.now()
