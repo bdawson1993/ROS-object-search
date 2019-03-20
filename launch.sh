@@ -1,1 +1,1 @@
-roslaunch uol_turtlebot_simulator object-search-test.launch
+roslaunch uol_turtlebot_simulator object-search-training.launch
