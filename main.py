@@ -63,10 +63,10 @@ class Search:
         idleState = IdleState.IdleState(mach, idleTrans)
 
         #add mach states
+        mach.AddState(patrolState)
         mach.AddState(startState)
         mach.AddState(moveState)
         mach.AddState(regState)
-        mach.AddState(patrolState)
         mach.AddState(idleState)
         
         
